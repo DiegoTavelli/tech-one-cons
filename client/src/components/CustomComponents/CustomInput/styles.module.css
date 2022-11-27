@@ -1,0 +1,46 @@
+.inputContainer > input {
+	text-align: center;
+	height: 1.375em;
+	width: 16em;
+	background-color: rgba(157, 222, 220, 0.098);
+	color: rgb(40, 51, 181);
+	font-size: 0.9rem;
+	border: 1.3px solid rgb(20, 136, 199);
+	cursor: text;
+	transition: all 0.3s ease;
+	border-radius: 0.375em;
+	margin: 0px 0.3125em 0px 0.3125em;
+}
+
+.parrafInput {
+	margin-bottom: 0.3125em;
+}
+
+.warnModal {
+	position: absolute;
+	display: flex;
+	background-color: rgb(237, 8, 54);
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 1px 1px 10px 10px;
+	height: 43px;
+	width: 14.3rem;
+	animation: warnModalAnim 300ms ease-in-out;
+}
+
+.warnParraf {
+	margin-left: 7px;
+	font-size: 0.9rem;
+	animation: warnModalAnim 400ms ease-in-out;
+}
+
+@keyframes warnModalAnim {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
