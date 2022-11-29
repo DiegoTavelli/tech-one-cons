@@ -10,10 +10,9 @@ const {
   DB_HOST,
 } = process.env;
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/OneConsultants`, {
+const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/one_cons`, {
   logging: false,
   native: false,
-  freezeTableName: true,
   dialect: 'postgres',
 });
 
@@ -44,7 +43,7 @@ try {
 const { Person, Academic } = sequelize.models;
 
 
-// Aca vendrian las relaciones
+//relaciones
 Person.belongsToMany(Academic, { through: 'PersonAcademic' })
 Academic.belongsTo(Person, { through: 'PersonAcademic' })
 

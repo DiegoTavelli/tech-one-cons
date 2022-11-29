@@ -1,11 +1,13 @@
 .textAreaContainer > textarea {
 	/* text-align: center; */
+	resize: vertical;
 	height: 4.375em;
-	width: 16em;
-	background-color: rgba(157, 222, 220, 0.098);
+	min-width: 250px;
+	width: 25%;
+	background-color: rgba(157, 222, 220, 0.222);
 	color: rgb(40, 51, 181);
 	font-size: 0.9rem;
-	border: 1.3px solid rgb(20, 136, 199);
+	border: 1.3px solid rgb(37, 142, 202);
 	cursor: text;
 	transition: all 0.3s ease;
 	border-radius: 0.375em;

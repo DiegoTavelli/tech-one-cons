@@ -12,26 +12,24 @@ module.exports = (sequelize) => {
     },
     fieldOfStudy: {
       type: DataTypes.STRING,
-      allowNull: false
     },
     activities: {
       type: DataTypes.STRING,
-      allowNull: false
     },
     description: {
       type: DataTypes.STRING,
     },
     start: {
       type: DataTypes.STRING,
-      allowNull: false
     },
     end: {
       type: DataTypes.STRING,
-      allowNull: false
     },
     titleImg: {
       type: DataTypes.STRING,
-    },
-
+    }
+  }, {
+    timestamps: false,
+    freezeTableName: true,
   })
 }

@@ -1,9 +1,11 @@
-import { SET_PERSON, SET_ACADEMICS, POST_PERSON } from "../constants"
+import { SET_PERSON, SET_ACADEMICS, POST_PERSON, CLEAR_POST, GET_PERSONS } from "../constants"
 
 
 const initialState = {
   person: [],
   academics: [],
+  post: {},
+  users: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -20,7 +22,18 @@ const reducer = (state = initialState, action) => {
       }
     case POST_PERSON:
       return {
-        state
+        ...state,
+        post: action.payload
+      }
+    case CLEAR_POST:
+      return {
+        ...state,
+        post: action.payload
+      }
+    case GET_PERSONS:
+      return {
+        ...state,
+        users: action.payload
       }
     default:
       return {

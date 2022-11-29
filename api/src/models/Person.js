@@ -5,7 +5,6 @@ module.exports = (sequelize) => {
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
-      allowNull: false,
       defaultValue: DataTypes.UUIDV4
     },
     name: {
@@ -21,7 +20,7 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     phone: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false
     },
     country: {
@@ -29,19 +28,17 @@ module.exports = (sequelize) => {
     },
     city: {
       type: DataTypes.STRING,
-      allowNull: false
     },
     street: {
       type: DataTypes.STRING,
-      allowNull: false
     },
     streetNumber: {
       type: DataTypes.INTEGER,
-      allowNull: false
     },
     postalCode: {
       type: DataTypes.INTEGER,
-      allowNull: false
     },
+  }, {
+    freezeTableName: true,
   })
 }

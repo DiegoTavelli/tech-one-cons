@@ -8,7 +8,7 @@ const CustomDatePicker = ({ startDate, setStartDate, endDate, setEndDate, onChan
 
   return (
     <div className={styles.datePickerContainer}>
-      <p>Start date</p>
+      <p className={styles.parrafDatePicker} >Start date</p>
       <DatePicker
         onCalendarClose={onChangePicker}
         selected={startDate}
@@ -19,8 +19,9 @@ const CustomDatePicker = ({ startDate, setStartDate, endDate, setEndDate, onChan
         endDate={endDate}
         dateFormat='MM/yyyy'
         showMonthYearPicker
+        PopoverProps={{ style: { ...{ left: '-400px' } } }}
       />
-      <p>End date (or expected)</p>
+      <p className={styles.parrafDatePicker} >End date (or expected)</p>
       <DatePicker
         onCalendarClose={onChangePicker}
         selected={endDate}

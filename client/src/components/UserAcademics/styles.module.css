@@ -1,0 +1,12 @@
+.academicsContainer {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+}
+
+.formAcademicsContainer {
+	margin-top: 23px;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+}

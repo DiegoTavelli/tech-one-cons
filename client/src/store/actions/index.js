@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { SET_PERSON, SET_ACADEMICS, POST_PERSON } from "../constants";
-import { BASE_URL, POST_PROFILE } from '../../constants'
+import { SET_PERSON, SET_ACADEMICS, POST_PERSON, CLEAR_POST, GET_PERSONS } from "../constants";
+import { BASE_URL, POST_PROFILE_URL, GET_USERS_URL } from '../../constants'
 
 
 export function setPerson(payload) {
@@ -21,17 +21,38 @@ export function setAcademics(payload) {
   }
 }
 
-export function postUser(payload) {
+export function postUser(userData) {
   return async (dispatch) => {
     try {
-      const send = await axios.post(`${BASE_URL}${POST_PROFILE}`, payload);
-      const response = await send.data;
+      const { data } = await axios.post(`${BASE_URL}${POST_PROFILE_URL}`, userData);
       dispatch({
         type: POST_PERSON,
-        payload: response
+        payload: data
       })
     } catch (error) {
-      console.log('--Error on postUser action', error)
+      dispatch({
+        type: POST_PERSON,
+        payload: error.response.data
+      })
     }
+  }
+}
+
+export function clearPost() {
+  return (dispatch) => {
+    dispatch({
+      type: CLEAR_POST,
+      payload: null
+    })
+  }
+}
+
+export function getPersons() {
+  return async (dispatch) => {
+    const { data } = await axios.get(`${BASE_URL}${GET_USERS_URL}`);
+    dispatch({
+      type: GET_PERSONS,
+      payload: data
+    })
   }
 }
