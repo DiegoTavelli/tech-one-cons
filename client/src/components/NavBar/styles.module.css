@@ -1,6 +1,11 @@
 .navBarContainer {
+	position: relative;
 	display: flex;
-	width: 121%;
+	margin: auto;
+	width: 120%;
+	margin-right: auto;
+	margin-left: auto;
+	min-width: 260px;
 	height: 60px;
 	border-bottom: 2px solid rgba(54, 164, 222, 0.652);
 	background-image: linear-gradient(

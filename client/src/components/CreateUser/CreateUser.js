@@ -113,14 +113,15 @@ function CreateUser() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (name && lastName && email && phone && (!error.email && !error.phone)) {
+    if (name && lastName && email && phone && country && city && street
+      && streetNumber && postalCode && (!error.email && !error.phone)) {
       dispatch(setPerson(userState))
       navigate('/academic')
     }
     else alert(
       error.email || error.phone ?
         'there is an error in some parameter' :
-        'name, last name, email & phone are required')
+        'all fields are required')
   }
 
 
@@ -172,7 +173,7 @@ function CreateUser() {
           error={error}
         />
         <CustomInputTwo
-          parraf='Country'
+          parraf='Country *'
           name='country'
           value={country}
           placeholder='country'
@@ -180,7 +181,7 @@ function CreateUser() {
           error={error}
         />
         <CustomInputTwo
-          parraf='City'
+          parraf='City *'
           name='city'
           value={city}
           placeholder='city'
@@ -188,7 +189,7 @@ function CreateUser() {
           error={error}
         />
         <CustomInputTwo
-          parraf='Street'
+          parraf='Street *'
           name='street'
           value={street}
           placeholder='street'
@@ -196,7 +197,7 @@ function CreateUser() {
           error={error}
         />
         <CustomInputTwo
-          parraf='Street Number'
+          parraf='Street Number *'
           name='streetNumber'
           value={streetNumber}
           placeholder='ej. 500'
@@ -204,7 +205,7 @@ function CreateUser() {
           error={error}
         />
         <CustomInputTwo
-          parraf='Postal Code'
+          parraf='Postal Code *'
           name='postalCode'
           value={postalCode}
           placeholder='postal code'
