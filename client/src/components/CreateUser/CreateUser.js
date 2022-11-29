@@ -68,7 +68,7 @@ function CreateUser() {
 
   //only string validation
   const onChangeText = (e) => {
-    const regexStr = /^[a-záéíóú.\s]*$/i;
+    const regexStr = /^[a-záéíóúñ.\s]*$/i;
     if (regexStr.test(e.target.value)) {
       setUserState({
         ...userState,
