@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './styles.module.css'
-import CustomInput from '../CustomComponents/CustomInput/CustomInput';
-import { setPerson } from '../../store/actions/index'
+import CustomInputTwo from '../CustomComponents/CustomInputTwo/CustomInputTwo';
+import { setPerson, clearPost } from '../../store/actions/index'
 import { useNavigate } from 'react-router-dom';
-// import countriesData from '../../apiCountries/countries.json'
+import ButtonFormNext from '../CustomComponents/CustomButtons/ButtonForm/ButtonFormNext';
+
 
 function CreateUser() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const personData = useSelector((store) => store.person)
-  // const countries = [JSON.stringify(countriesData)]
+  const personData = useSelector((store) => store.person);
+  const postRes = useSelector((store) => store.post)
 
   const [error, setError] = useState({
     email: '',
@@ -44,9 +45,13 @@ function CreateUser() {
     if (personData) {
       setUserState(personData)
     }
+    if (postRes) {
+      dispatch(clearPost());
+    }
+
   }, [])
 
-  //email controller
+  //email validation
   const onKeyUpEmail = (e) => {
     const regexEmail =
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -55,14 +60,13 @@ function CreateUser() {
         ...error,
         [e.target.name]: `please insert a valid ${e.target.name}`
       })
-    }
-    else setError({
+    } else setError({
       ...error,
       [e.target.name]: ''
     })
   }
 
-  //string controller
+  //only string validation
   const onChangeText = (e) => {
     const regexStr = /^[a-záéíóú.\s]*$/i;
     if (regexStr.test(e.target.value)) {
@@ -73,18 +77,18 @@ function CreateUser() {
     }
   }
 
-  //number controller
+  //only number validation
   const onChangeNumber = (e) => {
     const regexNum = /^[0-9]*$/;
     if (regexNum.test(e.target.value)) {
       setUserState({
         ...userState,
-        [e.target.name]: e.target.value
+        [e.target.name]: Number(e.target.value)
       })
     }
   }
 
-  //phone controller
+  //phone validation
   const onKeyUpPhone = (e) => {
     const regexStr = /^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/gm
     if (!regexStr.test(e.target.value) && e.target.value !== '') {
@@ -99,7 +103,7 @@ function CreateUser() {
     })
   }
 
-  // for uncontrolled inputs
+  // for no validated inputs
   const onChangeUncontrolled = (e) => {
     setUserState({
       ...userState,
@@ -122,26 +126,34 @@ function CreateUser() {
 
   return (
     <>
-      <form className={styles.formContainer} onSubmit={(e) => handleSubmit(e)} >
-        <CustomInput
+      <div>
+        <ButtonFormNext onClickFnc={handleSubmit} />
+      </div>
+      {
+        postRes &&
+        <div
+          style={{ backgroundColor: postRes.info ? 'green' : 'red' }}
+        >{postRes.info ? postRes.info : postRes.err}
+        </div>
+      }
+      <form className={styles.formContainer}>
+        <CustomInputTwo
           parraf='Name *'
           name='name'
           value={name}
           placeholder='name'
           onChange={onChangeText}
           error={error}
-          required
         />
-        <CustomInput
+        <CustomInputTwo
           parraf='Last Name *'
           name='lastName'
           value={lastName}
           placeholder='last name'
           onChange={onChangeText}
           error={error}
-          required
         />
-        <CustomInput
+        <CustomInputTwo
           parraf='Email *'
           name='email'
           value={email}
@@ -149,19 +161,17 @@ function CreateUser() {
           onKeyUp={onKeyUpEmail}
           onChange={onChangeUncontrolled}
           error={error}
-          required
         />
-        <CustomInput
+        <CustomInputTwo
           parraf='Phone *'
           name='phone'
           value={phone}
-          placeholder='+54 1127764822'
+          placeholder='+54 1124564822'
           onKeyUp={onKeyUpPhone}
           onChange={onChangeUncontrolled}
           error={error}
-          required
         />
-        <CustomInput
+        <CustomInputTwo
           parraf='Country'
           name='country'
           value={country}
@@ -169,7 +179,7 @@ function CreateUser() {
           onChange={onChangeText}
           error={error}
         />
-        <CustomInput
+        <CustomInputTwo
           parraf='City'
           name='city'
           value={city}
@@ -177,7 +187,7 @@ function CreateUser() {
           onChange={onChangeText}
           error={error}
         />
-        <CustomInput
+        <CustomInputTwo
           parraf='Street'
           name='street'
           value={street}
@@ -185,7 +195,7 @@ function CreateUser() {
           onChange={onChangeUncontrolled}
           error={error}
         />
-        <CustomInput
+        <CustomInputTwo
           parraf='Street Number'
           name='streetNumber'
           value={streetNumber}
@@ -193,7 +203,7 @@ function CreateUser() {
           onChange={onChangeNumber}
           error={error}
         />
-        <CustomInput
+        <CustomInputTwo
           parraf='Postal Code'
           name='postalCode'
           value={postalCode}
@@ -201,10 +211,6 @@ function CreateUser() {
           onChange={onChangeNumber}
           error={error}
         />
-        <button
-          type='submit'
-        >{'>'}
-        </button>
       </form>
     </>
   )

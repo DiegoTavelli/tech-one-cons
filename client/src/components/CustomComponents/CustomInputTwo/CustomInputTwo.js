@@ -1,21 +1,19 @@
+
 import styles from './styles.module.css'
-
-const CustomInput = ({ parraf, value, name, placeholder, onChange, onKeyUp, error }) => {
-
+const CustomInputTwo = ({ parraf, value, name, placeholder, onChange, onKeyUp, error }) => {
 
   return (
-    <div className={styles.inputContainer}>
-      <p className={styles.parrafInput}>
-        {parraf}
-      </p>
+    <div className={`${styles.customInputContainer} ${styles.inputEffect}`}>
+      <label className={styles.labelInput} >{parraf}</label>
       <input
-        type='text'
-        placeholder={placeholder}
+        className={styles.effect17}
+        type="text"
+        placeholder=''
         name={name}
         value={value}
         onChange={(e) => onChange(e)}
-        onKeyUp={onKeyUp}
-      />
+        onKeyUp={onKeyUp} />
+      <span className={styles.focusBorder}></span>
       {
         (error?.email.length && name === 'email') || (error?.phone.length && name === 'phone') ?
           <div className={styles.warnModal}>
@@ -32,6 +30,4 @@ const CustomInput = ({ parraf, value, name, placeholder, onChange, onKeyUp, erro
   )
 }
 
-
-
-export default CustomInput;
+export default CustomInputTwo;

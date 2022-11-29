@@ -1,14 +1,21 @@
 .datePickerContainer {
+	position: relative;
 }
 .datePicker {
+	display: flex;
 	text-align: center;
-	height: 1.375em;
-	width: 16em;
-	background-color: rgba(157, 222, 220, 0.098);
-	color: rgb(40, 51, 181);
-	font-size: 0.9rem;
-	border: 1.3px solid rgb(20, 136, 199);
-	cursor: text;
-	border-radius: 0.375em;
-	/* margin: 0px 0.3125em 0px 0.3125em; */
+	border: 0;
+	border-radius: 3px;
+	padding: 4px 0;
+	border-bottom: 1px solid rgb(37, 142, 202);
+	background-color: rgba(23, 144, 205, 0.119);
+	min-width: 250px;
+	width: 25%;
+}
+
+.parrafDatePicker {
+	position: relative;
+	font-weight: 500;
+	right: 0%;
+	bottom: 2px;
 }

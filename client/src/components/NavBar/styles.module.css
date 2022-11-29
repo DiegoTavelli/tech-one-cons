@@ -1,0 +1,10 @@
+.navBarContainer {
+	display: flex;
+	width: 121%;
+	height: 60px;
+	border-bottom: 2px solid rgba(54, 164, 222, 0.652);
+	background-image: linear-gradient(
+		rgba(4, 0, 255, 0.22),
+		rgba(4, 0, 255, 0.392)
+	);
+}

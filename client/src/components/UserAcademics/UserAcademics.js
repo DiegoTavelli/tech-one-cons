@@ -1,20 +1,21 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import CustomInput from '../CustomComponents/CustomInput/CustomInput'
+import CustomInputTwo from '../CustomComponents/CustomInputTwo/CustomInputTwo'
 import CustomTextArea from '../CustomComponents/CustomTextArea/CustomTextArea';
 import CustomDatePicker from '../CustomComponents/CustomDatePicker/CustomDatePicker';
-import { setAcademics, postUser } from '../../store/actions/index'
-
+import { setAcademics } from '../../store/actions/index'
+import ButtonFormNext from '../CustomComponents/CustomButtons/ButtonForm/ButtonFormNext';
+import ButtonFormPrev from '../CustomComponents/CustomButtons/ButtonForm/ButtonFormPrev';
+import styles from './styles.module.css'
 
 function UserAcademics() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const personData = useSelector((store) => store.person)
   const academicsData = useSelector((store) => store.academics)
 
   const newDate = new Date();
+  const newDateString = newDate.toDateString()
   const [startDate, setStartDate] = useState(newDate);
   const [endDate, setEndDate] = useState(newDate);
 
@@ -24,9 +25,8 @@ function UserAcademics() {
     fieldOfStudy: '',
     activities: '',
     description: '',
-    start: newDate,
-    end: newDate,
-    titleImg: '',
+    start: newDateString,
+    end: newDateString,
   })
 
   const {
@@ -35,7 +35,6 @@ function UserAcademics() {
     fieldOfStudy,
     activities,
     description,
-    titleImg,
   } = academicState;
 
   useEffect(() => {
@@ -54,8 +53,8 @@ function UserAcademics() {
   const onChangePicker = () => {
     setAcademicState({
       ...academicState,
-      start: startDate,
-      end: endDate
+      start: startDate.toDateString(),
+      end: endDate.toDateString()
     })
   }
 
@@ -66,59 +65,57 @@ function UserAcademics() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(postUser(personData, academicState))
+    if (!institution || !degree) return alert('Institution & Degree are required')
+    dispatch(setAcademics(academicState))
+    navigate('/summary')
   }
 
-
-  // console.log(academicState)
   return (
-    <form onSubmit={(e) => onSubmit(e)}>
-      <CustomInput
-        parraf='Institution'
-        name='institution'
-        value={institution}
-        onChange={onChange}
-      />
-      <CustomInput
-        parraf='Degree'
-        name='degree'
-        value={degree}
-        onChange={onChange}
-      />
-      <CustomInput
-        parraf='Field Of Study'
-        name='fieldOfStudy'
-        value={fieldOfStudy}
-        onChange={onChange}
-      />
-      <CustomInput
-        parraf='Activities'
-        name='activities'
-        value={activities}
-        onChange={onChange}
-      />
-      <CustomDatePicker
-        onChangePicker={onChangePicker}
-        startDate={startDate}
-        setStartDate={setStartDate}
-        endDate={endDate}
-        setEndDate={setEndDate}
-      />
-      <CustomTextArea
-        parraf='Description'
-        name='description'
-        value={description}
-        onChange={onChange}
-      />
-      <CustomInput
-        parraf='titleImg'
-        name='titleImg'
-        value={titleImg}
-        onChange={onChange}
-      />
-      <button type='submit'></button>
-      <button onClick={() => goBackButton()} >x</button>
-    </form>
+    <div className={styles.academicsContainer}>
+      <div>
+        <ButtonFormPrev onClickFnc={goBackButton} />
+        <ButtonFormNext onClickFnc={onSubmit} />
+      </div>
+      <form className={styles.formAcademicsContainer}>
+        <CustomInputTwo
+          parraf='Institution *'
+          name='institution'
+          value={institution}
+          onChange={onChange}
+        />
+        <CustomInputTwo
+          parraf='Degree *'
+          name='degree'
+          value={degree}
+          onChange={onChange}
+        />
+        <CustomInputTwo
+          parraf='Field Of Study'
+          name='fieldOfStudy'
+          value={fieldOfStudy}
+          onChange={onChange}
+        />
+        <CustomInputTwo
+          parraf='Activities'
+          name='activities'
+          value={activities}
+          onChange={onChange}
+        />
+        <CustomDatePicker
+          onChangePicker={onChangePicker}
+          startDate={startDate}
+          setStartDate={setStartDate}
+          endDate={endDate}
+          setEndDate={setEndDate}
+        />
+        <CustomTextArea
+          parraf='Description'
+          name='description'
+          value={description}
+          onChange={onChange}
+        />
+      </form>
+    </div>
   )
 }
 

@@ -1,0 +1,80 @@
+.downloadButton {
+	cursor: pointer;
+	background: #ffffff;
+	border: solid 1px #e6e6e6;
+	border-radius: 2px;
+	height: 50px;
+	line-height: 50px;
+	margin: 10px 55px;
+	position: relative;
+	text-align: center;
+	vertical-align: middle;
+	width: 100px;
+}
+
+.downloadButton span {
+	background: #f2594b;
+	border-radius: 4px;
+	color: #ffffff;
+	display: inline-block;
+	font-size: 11px;
+	font-weight: 700;
+	line-height: normal;
+	padding: 5px 10px;
+	position: relative;
+	text-transform: uppercase;
+	z-index: 1;
+}
+
+.downloadButton span:last-child {
+	margin-left: -20px;
+}
+
+.downloadButton:before,
+.downloadButton:after {
+	background: #ffffff;
+	border: solid 3px #9fb4cc;
+	border-radius: 4px;
+	content: '';
+	display: block;
+	height: 35px;
+	left: 50%;
+	margin: -17px 0 0 -12px;
+	position: absolute;
+	top: 50%;
+	/*transform:translate(-50%,-50%);*/
+
+	width: 25px;
+}
+
+.downloadButton:hover:before,
+.downloadButton:hover:after {
+	background: #e2e8f0;
+}
+/*a:before{transform:translate(-30%,-60%);}*/
+
+.downloadButton:before {
+	margin: -23px 0 0 -5px;
+}
+
+.downloadButton:hover {
+	background: #e2e8f0;
+	border-color: #9fb4cc;
+}
+
+.downloadButton:active {
+	background: #dae0e8;
+	box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.downloadButton span:first-child {
+	display: none;
+}
+
+.downloadButton:hover span:first-child {
+	display: inline-block;
+}
+
+.downloadButton:hover span:last-child {
+	display: none;
+}
