@@ -42,7 +42,7 @@ const postUser = async (req, res) => {
         .json({ err: 'institution, degree, fieldOfStudy, activities, start, end & description must be of type String' })
     }
 
-    //if no error I create person and academics and relate them.
+    //if no error I create person and academics, and relate them.
     const person = await Person.create({
       name,
       lastName,
@@ -53,6 +53,13 @@ const postUser = async (req, res) => {
       street,
       streetNumber,
       postalCode,
+      institution,
+      degree,
+      fieldOfStudy,
+      activities,
+      start,
+      end,
+      description,
     });
     const academics = await Academic.create({
       institution,
@@ -63,6 +70,7 @@ const postUser = async (req, res) => {
       end,
       description
     })
+
     await person.addAcademic(academics)
 
     return res.status(201).send({ info: 'Person successfully created' })
