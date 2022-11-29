@@ -8,9 +8,10 @@ const {
   DB_USER,
   DB_PASSWORD,
   DB_HOST,
+  DATABASE_URL
 } = process.env;
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/one_cons`, {
+const sequelize = new Sequelize(DATABASE_URL, {
   logging: false,
   native: false,
   dialect: 'postgres',
@@ -52,3 +53,5 @@ module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
 };
+
+//`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/one_cons`
