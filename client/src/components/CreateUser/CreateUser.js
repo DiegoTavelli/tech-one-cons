@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './styles.module.css'
 import CustomInputTwo from '../CustomComponents/CustomInputTwo/CustomInputTwo';
-import { setPerson, clearPost } from '../../store/actions/index'
+import { setPerson, clearPost, getPersons } from '../../store/actions/index'
 import { useNavigate } from 'react-router-dom';
 import ButtonFormNext from '../CustomComponents/CustomButtons/ButtonForm/ButtonFormNext';
 
@@ -47,8 +47,8 @@ function CreateUser() {
     }
     if (postRes) {
       dispatch(clearPost());
+      dispatch(getPersons())
     }
-
   }, [])
 
   //email validation

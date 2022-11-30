@@ -36,7 +36,11 @@ function Summary() {
         {
           personData &&
           Object.entries(personData).map(([keys, values]) => {
-            return <CustomView key={keys} keys={keys} values={values} />
+            return <CustomView
+              key={keys}
+              keys={keys}
+              values={values}
+            />
           })
         }
       </div>
@@ -45,7 +49,11 @@ function Summary() {
         {
           academicsData &&
           Object.entries(academicsData).map(([keys, values]) => {
-            return <CustomView key={keys} keys={keys} values={values} />
+            return <CustomView
+              key={keys}
+              keys={keys}
+              values={values}
+            />
           })
         }
       </div>

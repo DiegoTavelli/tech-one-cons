@@ -1,16 +1,21 @@
-import { useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { HotTable, HotColumn } from '@handsontable/react'
 import { registerAllModules } from 'handsontable/registry'
+import { getPersons } from '../../store/actions/index'
 import 'handsontable/dist/handsontable.full.css'
 import ButtonDownload from '../CustomComponents/CustomButtons/ButtonDownload/ButtonDownload'
 
 registerAllModules();
 
 function UsersList() {
+  const dispatch = useDispatch();
   const usersData = useSelector((state) => state.users);
   const hotTableComponent = useRef(null);
 
+  useEffect(() => {
+    dispatch(getPersons())
+  }, [])
 
   const downloadFunction = () => {
     const downloadPlugin = hotTableComponent.current.hotInstance.getPlugin('exportFile');
