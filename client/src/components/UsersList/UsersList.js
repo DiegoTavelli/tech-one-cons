@@ -42,6 +42,8 @@ function UsersList() {
           mergeCells={true}
           contextMenu={['alignment']}
           readOnly={true}
+          manualColumnResize={true}
+          manualRowResize={true}
         >
           <HotColumn data='id' title='id' />
           <HotColumn data='name' title='Name' />

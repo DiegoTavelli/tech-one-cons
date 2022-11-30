@@ -1,6 +1,17 @@
 import axios from 'axios';
-import { SET_PERSON, SET_ACADEMICS, POST_PERSON, CLEAR_POST, GET_PERSONS, CLEAR_STATES } from "../constants";
-import { BASE_URL, POST_PROFILE_URL, GET_USERS_URL } from '../../constants'
+import {
+  SET_PERSON,
+  SET_ACADEMICS,
+  POST_PERSON,
+  CLEAR_POST,
+  GET_PERSONS,
+  CLEAR_STATES
+} from "../constants";
+import {
+  BASE_URL,
+  POST_PROFILE_URL,
+  GET_USERS_URL
+} from '../../constants'
 
 
 export function setPerson(payload) {
