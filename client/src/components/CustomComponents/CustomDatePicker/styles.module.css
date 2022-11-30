@@ -13,6 +13,7 @@
 	width: 25%;
 	border-radius: 6px 6px 2px 2px;
 	box-shadow: 0.5px 0.6px 1px rgb(21, 20, 20);
+	outline: none !important;
 }
 
 .parrafDatePicker {
