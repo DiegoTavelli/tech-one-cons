@@ -120,7 +120,7 @@ function CreateUser() {
     }
     else alert(
       error.email || error.phone ?
-        'there is an error in some parameter' :
+        `there is an error on ${error.email ? 'email' : 'phone'} parameter` :
         'all fields are required')
   }
 
