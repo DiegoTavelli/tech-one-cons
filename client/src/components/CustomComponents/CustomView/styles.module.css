@@ -3,6 +3,8 @@
 }
 
 .parrafKey {
+	min-width: auto;
+	width: 300px;
 	cursor: default;
 	background-color: rgba(130, 157, 166, 0.641);
 	margin: 0 0 -14.4px 0;
@@ -10,6 +12,7 @@
 	box-shadow: 0.5px 0px 1px rgb(21, 20, 20);
 }
 .parrafValue {
+	width: 300px;
 	cursor: default;
 	font-size: 0.9em;
 	border: 0;
@@ -18,4 +21,13 @@
 	background-color: rgba(147, 201, 232, 0.142);
 	border-radius: 0 0 5px 5px;
 	box-shadow: 0.5px 0.6px 1px rgb(21, 20, 20);
+}
+
+@media only screen and (max-width: 640px) {
+	.parrafKey {
+		width: auto;
+	}
+	.parrafValue {
+		width: auto;
+	}
 }

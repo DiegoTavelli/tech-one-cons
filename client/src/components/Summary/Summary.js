@@ -27,7 +27,7 @@ function Summary() {
 
   return (
     <div className={styles.summaryContainer} >
-      <div style={{ position: 'absolute' }} >
+      <div style={{ position: 'absolute', minWidth: '300px' }} >
         <ButtonFormPrev onClickFnc={handleGoBack} />
         <ButtonFormNext onClickFnc={submit} />
       </div>
