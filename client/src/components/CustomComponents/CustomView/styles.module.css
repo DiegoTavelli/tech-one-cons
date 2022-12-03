@@ -3,7 +3,7 @@
 }
 
 .parrafKey {
-	min-width: auto;
+	min-width: 100%;
 	width: 300px;
 	cursor: default;
 	background-color: rgba(130, 157, 166, 0.641);
@@ -12,7 +12,7 @@
 	box-shadow: 0.5px 0px 1px rgb(21, 20, 20);
 }
 .parrafValue {
-	width: 300px;
+	width: 100%;
 	cursor: default;
 	font-size: 0.9em;
 	border: 0;

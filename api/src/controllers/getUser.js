@@ -5,9 +5,9 @@ const getUser = async (req, res) => {
     const allPersons = await Person.findAll({
       includes: Academic
     })
-
     res.status(200).send(allPersons)
-  } catch (e) {
+  }
+  catch (e) {
     res.status(500).json({ err: 'Error on getProfile', e })
   }
 }

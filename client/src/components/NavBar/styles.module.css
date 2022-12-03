@@ -2,7 +2,7 @@
 	position: relative;
 	display: flex;
 	margin: auto;
-	width: 120%;
+	width: auto;
 	margin-right: auto;
 	margin-left: auto;
 	min-width: 260px;
